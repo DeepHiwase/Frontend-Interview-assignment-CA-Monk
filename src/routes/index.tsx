@@ -1,5 +1,5 @@
 // Node Modules
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, redirect } from "react-router";
 // Layouts
 import RootLayout from "@/layouts/RootLayout";
 // Pages
@@ -19,6 +19,10 @@ const rootRouteChildren: RouteObject[] = [
 ];
 
 const blogRouteChildren: RouteObject[] = [
+  {
+    index: true,
+    loader: () => redirect("/blogs/1"),
+  },
   {
     path: ":blogId",
     element: <BlogDetailPage />,

@@ -10,7 +10,7 @@ const FOOTER_LINKS = [
       {
         id: 1,
         title: "Blog",
-        href: "#",
+        href: "/blogs",
       },
       {
         id: 2,

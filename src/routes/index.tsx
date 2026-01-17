@@ -6,6 +6,10 @@ import RootLayout from "@/layouts/RootLayout";
 import HomePage from "@/pages/HomePage";
 // Types
 import type { RouteObject } from "react-router";
+import RootErrorBoundary from "@/pages/RootErrorBoundary";
+import BlogLayout from "@/layouts/BlogLayout";
+import BlogDetailPage from "@/pages/BlogDetailPage";
+import blogDetailLoader from "./loaders/blogDetailLoader";
 
 const rootRouteChildren: RouteObject[] = [
   {
@@ -14,11 +18,25 @@ const rootRouteChildren: RouteObject[] = [
   },
 ];
 
+const blogRouteChildren: RouteObject[] = [
+  {
+    path: ":blogId",
+    element: <BlogDetailPage />,
+    loader: blogDetailLoader,
+  },
+];
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
+    errorElement: <RootErrorBoundary />,
     children: rootRouteChildren,
+  },
+  {
+    path: "/blogs",
+    element: <BlogLayout />,
+    children: blogRouteChildren,
   },
 ]);
 
